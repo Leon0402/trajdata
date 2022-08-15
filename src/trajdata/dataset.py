@@ -477,7 +477,8 @@ class UnifiedDataset(Dataset):
                     self.cache_path, scene_info.env_name, scene_info.name
                 )
 
-                if self.env_cache.scene_is_cached(
+                # TODO(leon): Upstream
+                if not self.rebuild_cache and self.env_cache.scene_is_cached(
                     scene_info.env_name, scene_info.name
                 ) and not scene_utils.enforce_desired_dt(
                     scene_info, self.desired_dt, dry_run=True
